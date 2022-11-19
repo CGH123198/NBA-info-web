@@ -1,0 +1,25 @@
+.search-form-box {
+    margin: 0 auto;
+    text-align: center;
+
+    &::before {
+        content: '';
+        display: block;
+        height: 130px;
+    }
+
+    &::after {
+        content: '';
+        display: block;
+        height: 100px;
+    }
+}
+
+.search-form {
+    margin: 0 auto;
+}
+
+.search-input-box {
+    display: flex;
+    flex-direction: row;
+}
