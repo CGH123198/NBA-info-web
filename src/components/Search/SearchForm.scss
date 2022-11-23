@@ -5,7 +5,7 @@
     &::before {
         content: '';
         display: block;
-        height: 130px;
+        height: 120px;
     }
 
     &::after {
@@ -17,9 +17,21 @@
 
 .search-form {
     margin: 0 auto;
+    display: flex;
+    width: 530px;
+    justify-content: center;
 }
 
 .search-input-box {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    width: 450px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 640px) {
+    .search-input-box {
+        display: block;
+    }
 }

@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import color from '../../styles/color';
+import color from '../../lib/styles/color';
 
 const HeaderWrapper = styled.div`
     background-color: ${color.blue};
     min-height: 120px;
-    width: 100vw;
     display: flex;
     position: relative;
     z-index: 100;

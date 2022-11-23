@@ -1,0 +1,59 @@
+.players-info-container {
+    min-height: 320px;
+    background-color: #c5c5a3;
+    margin: 0 5vw;
+    border-radius: 21px;
+
+    & h1 {
+        margin: 0 auto;
+        text-align: center;
+        background-color: black;
+        color: white;
+        border-radius: 20px 20px 0 0;
+    }
+}
+
+.players-info-table {
+    height: 100%;
+    margin: 0;
+
+    & .players-info-body:last-child {
+        &>div:first-child {
+            border-bottom-left-radius: 5px;
+        }
+
+        &div>:last-child {
+            border-bottom-right-radius: 5px;
+        }
+    }
+}
+
+.players-info-header {
+    display: flex;
+    flex-basis: 80px;
+    flex-grow: 1;
+    background-color: #333;
+
+    &>div {
+        box-sizing: border-box;
+        width: 100%;
+        color: white;
+        text-align: center;
+        border-right: 2px solid #666;
+        line-height: 35px;
+        height: 35px;
+    }
+
+    &>div:nth-child(6n-5) {
+        border-left: 2px solid #666;
+    }
+}
+
+.error-message {
+    color: blue;
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+    height: 100%;
+    line-height: 100px;
+}

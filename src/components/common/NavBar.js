@@ -1,25 +1,27 @@
 import styled from 'styled-components';
-import color from '../../styles/color';
+import color from '../../lib/styles/color';
 import StyledLink from './StyledLink';
 
 const StyledNav = styled.nav`
     position: absolute;
     color: #ccc;
     background-color: ${color.red};
-    width: 100vw;
+    width: 100%;
     transition: .5s;
     display: flex;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
 
     & ul {
         display: flex;
         width: 100%; 
         justify-content: space-evenly;
         margin-top: ${ props => props.nav ? "0" : "-455px" };
+        padding-left: 0;
         margin-bottom: 0;
         list-style: none;
         height: ${props => props.nav ? "100%" : "0" };
         transition: .5s;
-        padding: 0 20px;
     }
 
     & ul li {
@@ -29,8 +31,8 @@ const StyledNav = styled.nav`
         padding: 25px 10px;
         font-weight: 700;
         font-size: 25px;
-        transition: ${ props => props.nav ? ".3s" : ".2s" };;
-        transition-delay: ${ props => props.nav ? ".3s" : "0" };;
+        transition: ${ props => props.nav ? ".3s" : ".2s" };
+        transition-delay: ${ props => props.nav ? ".3s" : "0" };
     }
 
     @media screen and (min-width: 1500px) {
@@ -43,8 +45,8 @@ const StyledNav = styled.nav`
         }
     }
 
-    @media screen and (max-width: 740px) {
-        width: 100vw;
+    @media screen and (max-width: 640px) {
+        width: 100%;
 
         & ul {
             display: block;
@@ -53,7 +55,10 @@ const StyledNav = styled.nav`
         }
 
         & ul li {
+            margin-left: auto;
+            margin-right: auto;
             border-bottom: 3px solid white;
+            width: 400px;
             font-size: 22px;
         }
 
@@ -63,16 +68,28 @@ const StyledNav = styled.nav`
     }
 `;
 
-const NavBar = ({ nav, ...rest }) => {
+const NavBar = ({ nav, user, ...rest }) => {
     return (
         <StyledNav nav={nav} {...rest}>
-            <ul>
-                <StyledLink to="/players"><li>Player</li></StyledLink>
-                <StyledLink to="/teams"><li>Teams</li></StyledLink>
-                <StyledLink to="/match-data"><li>MatchData</li></StyledLink>
-                <StyledLink to="/live"><li>Live</li></StyledLink>
-                <StyledLink to="/standings"><li>NBA Standings</li></StyledLink>
-            </ul>
+            { user ?
+                <ul>
+                    <StyledLink to="/"><li>Home</li></StyledLink>
+                    <StyledLink to="/players"><li>Player</li></StyledLink>
+                    <StyledLink to="/teams"><li>Teams</li></StyledLink>
+                    <StyledLink to="/match-data"><li>MatchData</li></StyledLink>
+                    <StyledLink to="/live"><li>Live</li></StyledLink>
+                    <StyledLink to="/standings"><li>Standings</li></StyledLink>
+                </ul>
+                :
+                <ul>
+                    <StyledLink to="/"><li>Home</li></StyledLink>
+                    <StyledLink to="/login"><li>Player</li></StyledLink>
+                    <StyledLink to="/login"><li>Teams</li></StyledLink>
+                    <StyledLink to="/login"><li>MatchData</li></StyledLink>
+                    <StyledLink to="/login"><li>Live</li></StyledLink>
+                    <StyledLink to="/login"><li>Standings</li></StyledLink>
+                </ul>
+            }
         </StyledNav>
     )
 }

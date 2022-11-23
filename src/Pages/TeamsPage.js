@@ -3,7 +3,7 @@ import SearchFormContainer from "../components/Search/SearchFormContainer";
 const TeamPage = () => {
     return (
         <div>
-            <SearchFormContainer placeholder="Search Teams..." />
+            <SearchFormContainer placeholder="Search Teams..." page="teams" />
         </div>
     )
 };

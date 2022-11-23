@@ -1,11 +1,17 @@
-import LayoutHeader from '../components/Layout/LayoutHeader';
+import LayoutHeaderContainer from '../components/Layout/LayoutHeaderContainer';
 import { Outlet } from 'react-router-dom';
-import color from '../styles/color';
+import color from '../lib/styles/color';
 
 const PageLayout = () => {
     return (
-        <div style={{ backgroundColor: `${color.redBackground}`}}>
-            <LayoutHeader />
+        <div style={{ 
+            backgroundColor: `${color.redBackground}`, 
+            height: "auto", 
+            paddingBottom: "30px",
+            minHeight: "96.8%"
+        }}
+        >
+            <LayoutHeaderContainer />
             <Outlet />
         </div>
     )

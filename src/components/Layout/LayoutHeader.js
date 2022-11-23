@@ -21,12 +21,16 @@ const BtnWrapper = styled.div`
     margin-right: 3vw;
     
     @media screen and (max-width: 1100px) {
-       margin: 10px 0 10px auto;
-       width: 220px;
+       margin: 10px 1vw 10px auto;
+       width: 350px;
+    }
+
+    @media screen and (max-width: 640px) {
+        width: auto;
     }
 `;
 
-const LayoutHeader = () => {
+const LayoutHeader = ({ user }) => {
     const [nav, setNav] = useState(false);
 
     const closeNav = (e) => {
@@ -38,18 +42,30 @@ const LayoutHeader = () => {
     }
 
     return (
-        <div style={{ position: "relative", zIndex: "100" }}>
+        <div style={{ position: "relative", zIndex: "100", width: "100%" }}>
             <Header onMouseOver={openNav}>
                 <div style={{ display: "flex" }}>
                     <StyledLink to="/"><Logo /></StyledLink>
                     <TitleH1>NBA SEASONS 2015 - 22 DATA</TitleH1>   
                 </div>
-                <BtnWrapper>
-                    <HeaderBtn>REGISTER</HeaderBtn>
-                    <StyledLink to="/login"><HeaderBtn>LOG-IN</HeaderBtn></StyledLink>
-                </BtnWrapper>
+                { !user ?
+                    <BtnWrapper>
+                        <HeaderBtn>REGISTER</HeaderBtn>
+                        <StyledLink to="/login"><HeaderBtn>LOG-IN</HeaderBtn></StyledLink>
+                    </BtnWrapper>
+                    :
+                    <BtnWrapper style={{ margin: "auto 30px 10px auto" }}>
+                        <div className="account-email" style={{ color: "white", margin:"0 auto 0 20px", display: "inline-block" }} >
+                            { user.kakao_account.email }
+                        </div>
+                        <StyledLink to="/">
+                            <HeaderBtn style={{ margin: "0 0 0 30px"}}>LOG-OUT</HeaderBtn>
+                        </StyledLink>
+                    </BtnWrapper>
+                }
+                
             </Header>
-            <NavBar nav={nav} onMouseOut={closeNav} onMouseOver={openNav} />
+            <NavBar nav={nav} onMouseOut={closeNav} onMouseOver={openNav} user={user} />
         </div>
     )
 }

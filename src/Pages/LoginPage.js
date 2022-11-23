@@ -1,6 +1,8 @@
+import LoginModalContainer from "../components/Login/LoginModalContainer";
+
 const LoginPage = () => {
     return (
-        <div>LoginPage</div>
+        <LoginModalContainer />
     )
 }
 

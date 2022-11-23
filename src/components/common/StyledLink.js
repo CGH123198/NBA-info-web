@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 const StyleLink = styled(Link)`
     text-decoration: none;
     color: white;
-
     &:link, &:visited, &:hover {
         text-decoration: none;
     }

@@ -1,0 +1,22 @@
+.players-info-body {
+    display: flex;
+    flex-basis: 80px;
+    flex-grow: 1;
+    background-color: #555;
+    cursor: pointer;
+
+    &>div {
+        box-sizing: border-box;
+        width: 100%;
+        color: white;
+        text-align: center;
+        border-right: 2px solid #888;
+        border-bottom: 2px solid #888;
+        line-height: 30px;
+        height: 30px;
+    }
+
+    &>div:nth-child(6n-5) {
+        border-left: 2px solid #666;
+    }
+}

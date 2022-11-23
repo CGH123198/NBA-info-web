@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import color from '../../styles/color';
+import color from '../../lib/styles/color';
 
 const BasicButton = styled.button`
     background-color: ${color.red};

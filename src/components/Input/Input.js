@@ -1,45 +1,64 @@
 import styled from 'styled-components';
-import color from '../../styles/color';
+import color from '../../lib/styles/color';
 import { useState, useCallback } from 'react';
 
-const StyledInput = styled.input`
+export const SearchInputDiv = styled.div`
+    display: block;
+    background-color: ${ props => props.colors ? "#353535" : "#303030" };
+    box-sizing: border-box;
+    border: 0;
+    width: 430px;
+    height: 60px;
+    margin: 0 auto 0 30px;
+    border-radius: 5px 5px;
+
+    @media screen and (max-width: 640px) {
+        width: 360px;
+        margin-right: 30px;
+    }
+`;
+
+export const StyledInput = styled.input`
     outline: none;
-    background-color: #303030;
+    background-color: transparent;
     font-weight: 700;
     font-size: 21px;
     padding: 5px 15px 0;
     box-sizing: border-box;
     border: 0;
-    border-bottom: #333 5px solid;
     border-radius: 5px 5px;
-    width: 400px;
-    height: 57px;
+    width: 100%;
+    height: 100%;
     color: ${color.blue};
+    position: relative;
+    z-index: 1;
 
     &:focus {
         outline: none;
         border-bottom: #006BB6 5px solid;
-        background-color: #353535;
     }
 `;
 
-const PlaceholderLabel = styled.label`
+export const PlaceholderLabel = styled.label`
     display: inline-block;
     position: relative;
-    width: 175px;
+    width: 150px;
     text-align: left;
     line-height: 20px;
-    font-size: ${ props => props.color ? "13px" : "18px" };
+    font-size: ${ props => props.colors ? "12px" : "16px" };
     color: ${color.blue};
     font-weight: 700;
-    left: -385px;
-    top: ${ props => props.color ? "-20px" : "0" };
+    left: -79px;
+    top: ${ props => props.colors ? "-60px" : "-40px" };
+
+    @media screen and (max-width: 640px) {
+        left: -90px;
+    }
 `;
 
-const BasicInput = ({ placeholder }) => {
+const Input = ({ placeholder, value, ...rest }) => {
 
     const [color, setColor] = useState(false);
-    const [value, setValue] = useState("");
     
     const focusColor = () => {
        setColor(true);
@@ -51,16 +70,14 @@ const BasicInput = ({ placeholder }) => {
         }
     }, [value]);
 
-    const getInputValue = e => {
-        setValue(e.target.value);
-    }
-
     return (
-        <label className="input-label">
-            <StyledInput type="text" onFocus={focusColor}  onBlur={blurColor} onChange={getInputValue} value={value}/>
-            <PlaceholderLabel color={color} >{placeholder}</PlaceholderLabel>
-        </label>
+        <SearchInputDiv colors={color}>
+            <label className="input-label">
+                <StyledInput onFocus={focusColor}  onBlur={blurColor} value={value} {...rest}/>
+                <PlaceholderLabel colors={color} >{placeholder}</PlaceholderLabel>
+            </label>
+        </SearchInputDiv>
     )
 }
 
-export default BasicInput;
+export default Input;
